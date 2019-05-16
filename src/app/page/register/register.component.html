@@ -1,3 +1,53 @@
-<p>
-  register works!
-</p>
+<div id="register-page" class="container-fluid indigo">
+    <div class="row">
+        <div class="col s8 offset-s2">
+            <mat-card id="register-card">
+                <mat-card-title class="center-align">Crie sua conta</mat-card-title>
+                <mat-card-content>
+                    <div [formGroup]="registerForm" class="row">
+                        <mat-form-field class="col s6">
+                            <mat-label>Nome</mat-label>
+                            <input matInput formControlName="name" type="text">
+                            <mat-error>Por favor, informe seu nome</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col s6">
+                            <mat-label>Sobrenome</mat-label>
+                            <input matInput formControlName="lastName" type="text">
+                            <mat-error>Por favor, informe seu sobrenome</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col s6">
+                            <mat-label>CPF</mat-label>
+                            <input matInput formControlName="cpf" type="text">
+                            <mat-error>Por favor, informe seu CPF</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col s6">
+                            <mat-label>Data nascimento</mat-label>
+                            <input matInput formControlName="birthdayDate" type="email">
+                            <mat-error>Por favor, informe sua data de nascimento</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col s6">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" type="email">
+                            <mat-error>Por favor, informe um email válido</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col s6">
+                            <mat-label>Senha</mat-label>
+                            <input matInput formControlName="password" type="password">
+                            <mat-error>Por favor, informe um email válido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 offset-s3 center-align">
+                            <button mat-button
+                                    (click)="onClickRegister()"
+                                    class="col s12 indigo darken-2 white-text">
+                                Cadastrar
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </div>
+</div>
