@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthLoginDTO} from '@/_dto';
-import {AlertService, AuthService} from '@/_service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AlertService, UserRegisterService} from '@/_service';
+import {User} from '@/_model';
 
 @Component({
     selector: 'app-login',
@@ -12,14 +12,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
 
-    constructor(private authService: AuthService,
+    constructor(private userRegisterService: UserRegisterService,
                 private alertService: AlertService,
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router) {
-        if (this.authService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
     }
 
     ngOnInit(): void {
@@ -38,14 +35,22 @@ export class RegisterComponent implements OnInit {
     }
 
     public onClickRegister = () => {
+        debugger;
         if (this.registerForm.invalid) {
             return;
         }
-        debugger;
 
-        const payload = new AuthLoginDTO(this.registerForm.value.email, this.registerForm.value.password);
-        this.authService.login(payload)
-            .then(_ => this.router.navigate([this.returnUrl]))
+        const payload = new User();
+        payload.email = this.registerForm.value.email;
+        payload.password = this.registerForm.value.password;
+        payload.cpf = this.registerForm.value.cpf;
+        payload.birthdayDate = this.registerForm.value.birthdayDate;
+        payload.name = this.registerForm.value.name;
+        payload.lastName = this.registerForm.value.lastName;
+
+        this.userRegisterService.register(payload)
             .catch((error) => this.alertService.error(error));
+            /*.then(_ => this.router.navigate([this.returnUrl]))
+            .catch((error) => this.alertService.error(error));*/
     }
 }

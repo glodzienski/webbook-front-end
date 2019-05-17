@@ -20,11 +20,27 @@
                             <input matInput formControlName="cpf" type="text">
                             <mat-error>Por favor, informe seu CPF</mat-error>
                         </mat-form-field>
+
+
+
+                        <mat-form-field class="col s6">
+                            <mat-label>Data nascimento</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="birthdayDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error>Por favor, informe sua data de nascimento</mat-error>
+                        </mat-form-field>
+
+
+
                         <mat-form-field class="col s6">
                             <mat-label>Data nascimento</mat-label>
                             <input matInput formControlName="birthdayDate" type="email">
                             <mat-error>Por favor, informe sua data de nascimento</mat-error>
                         </mat-form-field>
+
+
+
                         <mat-form-field class="col s6">
                             <mat-label>Email</mat-label>
                             <input matInput formControlName="email" type="email">
