@@ -1,4 +1,5 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {AuthService} from '@/_service'
 
@@ -7,10 +8,10 @@ import {AuthService} from '@/_service'
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnDestroy, OnInit {
+export class AppComponent implements OnDestroy {
     mobileQuery: MediaQueryList;
-
-    isLogged: Boolean;
+    private isLoggedSubject: BehaviorSubject<any>;
+    isLogged: Observable<Boolean>;
 
     menuItems = [
         'Obras',
@@ -24,13 +25,14 @@ export class AppComponent implements OnDestroy, OnInit {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this.mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this.mobileQueryListener);
+        this.isLoggedSubject = new BehaviorSubject<any>(!!this.authService.currentUserValue);
+        this.isLogged = this.isLoggedSubject.asObservable();
+    }
+    public get isLoggedValue(): Boolean {
+        return this.isLoggedSubject.value;
     }
 
     ngOnDestroy(): void {
         this.mobileQuery.removeListener(this.mobileQueryListener);
-    }
-
-    ngOnInit(): void {
-        this.isLogged = !!this.authService.currentUserValue;
     }
 }

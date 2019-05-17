@@ -1,6 +1,6 @@
 <div [class.example-is-mobile]="mobileQuery.matches" class="app-container">
     <mat-toolbar color="primary" class="example-toolbar">
-        <button *ngIf="isLogged" mat-icon-button (click)="snav.toggle()">
+        <button *ngIf="isLoggedValue" mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
         <h1 class="example-app-name">Web Book</h1>
