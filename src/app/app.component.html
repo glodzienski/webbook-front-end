@@ -4,6 +4,16 @@
             <mat-icon>menu</mat-icon>
         </button>
         <h1 class="example-app-name">Web Book</h1>
+        <span class="nav-spacer"></span>
+
+        <!-- Menu do usuário, extrema direita -->
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>settings</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Configurações</button>
+            <button mat-menu-item (click)="onClickLogout()">Sair</button>
+        </mat-menu>
     </mat-toolbar>
 
     <mat-sidenav-container class="example-sidenav-container"
