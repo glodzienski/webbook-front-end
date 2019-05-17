@@ -7,13 +7,15 @@
         <span class="nav-spacer"></span>
 
         <!-- Menu do usuário, extrema direita -->
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>settings</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Configurações</button>
-            <button mat-menu-item (click)="onClickLogout()">Sair</button>
-        </mat-menu>
+        <section *ngIf="isLoggedValue">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>settings</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Configurações</button>
+                <button mat-menu-item (click)="onClickLogout()">Sair</button>
+            </mat-menu>
+        </section>
     </mat-toolbar>
 
     <mat-sidenav-container class="example-sidenav-container"
