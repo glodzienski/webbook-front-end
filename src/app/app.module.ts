@@ -2,15 +2,18 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {IConfig, NgxMaskModule} from 'ngx-mask';
+
+// Components
+import {AppComponent} from './app.component';
 import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
 import {RegisterComponent} from './page/register/register.component';
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCheckboxModule} from '@angular/material';
+import {MatCheckboxModule, MatNativeDateModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -43,6 +46,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptor} from '@/_helper/error.interceptor';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
     declarations: [
@@ -88,10 +92,13 @@ import {ErrorInterceptor} from '@/_helper/error.interceptor';
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatNativeDateModule,
+        NgxMaskModule.forRoot(options)
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        MatNativeDateModule
     ],
     bootstrap: [AppComponent]
 })

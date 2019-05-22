@@ -48,8 +48,10 @@ export class RegisterComponent implements OnInit {
         payload.lastName = this.registerForm.value.lastName;
 
         this.userRegisterService.register(payload)
+            .then(_ => {
+                this.alertService.success('Parabéns, agora você possui uma conta WebBook.');
+                this.router.navigate(['login']);
+            })
             .catch((error) => this.alertService.error(error));
-            /*.then(_ => this.router.navigate([this.returnUrl]))
-            .catch((error) => this.alertService.error(error));*/
     }
 }
