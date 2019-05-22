@@ -3,7 +3,7 @@
         <button *ngIf="isLogged" mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
-        <h1 class="example-app-name">Web Book</h1>
+        <h1 routerLink="/" routerLinkActive="active" class="example-app-name cursor pointer">Web Book</h1>
         <span class="nav-spacer"></span>
 
         <!-- Menu do usuário, extrema direita -->
@@ -12,7 +12,7 @@
                 <mat-icon>settings</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>Configurações</button>
+                <button mat-menu-item routerLink="/settings" routerLinkActive="active">Configurações</button>
                 <button mat-menu-item (click)="onClickLogout()">Sair</button>
             </mat-menu>
         </section>
