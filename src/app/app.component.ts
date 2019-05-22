@@ -11,8 +11,8 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnDestroy {
     mobileQuery: MediaQueryList;
-    private isLoggedSubject: BehaviorSubject<any>;
-    isLogged: Observable<boolean>;
+    isLogged: boolean;
+    private isLoggedObservable: Observable<boolean>;
 
     menuItems = [
         'Obras',
@@ -27,15 +27,11 @@ export class AppComponent implements OnDestroy {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this.mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this.mobileQueryListener);
-        this.isLoggedSubject = new BehaviorSubject<any>(!!this.authService.currentUserValue);
-        this.isLogged = this.isLoggedSubject.asObservable();
+        this.isLoggedObservable = this.authService.currentTokenObservable;
+        this.isLoggedObservable.subscribe((value) => (this.isLogged = value));
     }
 
     private mobileQueryListener: () => void;
-
-    public get isLoggedValue(): boolean {
-        return this.isLoggedSubject.value;
-    }
 
     public onClickLogout() {
         this.authService.logout();

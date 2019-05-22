@@ -6,29 +6,32 @@ import {AuthTokenDTO} from '@/_dto/AuthTokenDTO';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-    private currentUserSubject: BehaviorSubject<any>;
-    public currentUser: Observable<any>;
+    private currentTokenSubject: BehaviorSubject<any>;
+    public currentTokenObservable: Observable<any>;
 
     constructor(private httpService: HttpService) {
-        this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('token')));
-        this.currentUser = this.currentUserSubject.asObservable();
+        this.currentTokenSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('token')));
+        this.currentTokenObservable = this.currentTokenSubject.asObservable();
     }
 
-    public get currentUserValue(): any {
-        return this.currentUserSubject.value;
+    public refresh() {
+        this.currentTokenSubject.next(JSON.parse(localStorage.getItem('token')));
+    }
+
+    public get currentToken(): any {
+        return this.currentTokenSubject.value;
     }
 
     login(authLoginDTO: AuthLoginDTO) {
         return this.httpService.$_post<AuthTokenDTO>('auth/login', authLoginDTO)
-            .then(({ token }) => {
+            .then(({token}) => {
                 localStorage.setItem('token', JSON.stringify(token));
-                this.currentUserSubject.next(token);
+                this.currentTokenSubject.next(token);
             });
     }
 
     logout() {
-        // remove user from local storage to log user out
         localStorage.removeItem('token');
-        this.currentUserSubject.next(null);
+        this.currentTokenSubject.next(null);
     }
 }
