@@ -10,6 +10,8 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
 import {RegisterComponent} from './page/register/register.component';
+import {SettingsComponent} from './page/settings/settings.component';
+import {UserFormComponent} from './_component/user-form/user-form.component';
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -45,7 +47,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptor} from '@/_helper/error.interceptor';
-import { SettingsComponent } from './page/settings/settings.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -55,7 +56,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        SettingsComponent
+        SettingsComponent,
+        UserFormComponent
     ],
     imports: [
         BrowserModule,
@@ -99,7 +101,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         NgxMaskModule.forRoot(options)
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
         MatNativeDateModule
     ],
     bootstrap: [AppComponent]

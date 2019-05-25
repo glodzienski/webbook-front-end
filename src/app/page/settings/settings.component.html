@@ -1,3 +1,31 @@
-<p>
-  settings works!
-</p>
+<div class="container m-t-15">
+    <mat-card>
+        <mat-card-title class="center-align">Configurações</mat-card-title>
+        <mat-card-content>
+            <mat-accordion class="example-headers-align">
+                <mat-expansion-panel [expanded]="isStep(0)" (opened)="setStep(0)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Geral
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-user-form [(model)]="teste"></app-user-form>
+                    <mat-action-row>
+                        <button mat-button (click)="nextStep()" class="indigo white-text">Salvar</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="isStep(1)" (opened)="setStep(1)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Endereço
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                        <button mat-button color="primary" (click)="nextStep()">End</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>
