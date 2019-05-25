@@ -1,5 +1,5 @@
 import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
@@ -18,11 +18,32 @@ export class HttpHelper {
         ].includes(httpMethodWanted);
     }
 
+    private buildHttpHeader() {
+        const token = JSON.parse(localStorage.getItem('token'));
+
+        if (token) {
+            return {
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    token
+                })
+            };
+        }
+
+        return {};
+    }
+
     private build<T>(httpMethod: string, apiPath: string, payload: any) {
         return new Promise((resolver, rejector) => {
             if (this.validateIfHttpMethodIsAllowed(httpMethod)) {
-                this.http[httpMethod]<T>(`${environment.apiUrl}${apiPath}`, payload)
+                const httpOptions = this.buildHttpHeader();
+                const httpClientParameters = (httpMethod === 'get')
+                    ? [`${environment.apiUrl}${apiPath}`, httpOptions]
+                    : [`${environment.apiUrl}${apiPath}`, payload, httpOptions];
+
+                this.http[httpMethod]<T>(...httpClientParameters)
                     .subscribe(data => resolver(data), rejector);
+
                 return;
             }
             rejector(`Método ${httpMethod} não configurado`);

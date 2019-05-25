@@ -1,4 +1,4 @@
-<div class="container m-t-15">
+<div class="container mt-15">
     <mat-card>
         <mat-card-title class="center-align">Configurações</mat-card-title>
         <mat-card-content>
@@ -11,7 +11,7 @@
                     </mat-expansion-panel-header>
                     <app-user-form [(model)]="currentUser" [(isValid)]="isValidToSaveUser"></app-user-form>
                     <mat-action-row>
-                        <button mat-button (click)="nextStep()" class="indigo white-text">Salvar</button>
+                        <button mat-raised-button (click)="nextStep()" [disabled]="!isValidToSaveUser" color="primary">Salvar</button>
                     </mat-action-row>
                 </mat-expansion-panel>
                 <mat-expansion-panel [expanded]="isStep(1)" (opened)="setStep(1)">

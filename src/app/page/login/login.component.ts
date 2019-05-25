@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
     }
 
-    get f() { return this.loginForm.controls; }
-
     public onClickLogin = () => {
         if (this.loginForm.invalid) {
             return;

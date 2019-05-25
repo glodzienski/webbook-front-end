@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserRegisterService} from '@/_service';
+import {UserService} from '@/_service';
 import {User} from '@/_model';
 import {AlertHelper} from '@/_helper';
 
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
     public currentUser: User;
     public isValidToSaveUser: boolean;
 
-    constructor(private userRegisterService: UserRegisterService,
+    constructor(private userRegisterService: UserService,
                 private alertService: AlertHelper,
                 private route: ActivatedRoute,
                 private router: Router) {
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
-        this.userRegisterService.register(this.currentUser)
+        this.userRegisterService.store(this.currentUser)
             .then(_ => {
                 this.alertService.success('Parabéns, agora você possui uma conta WebBook.');
                 this.router.navigate(['login']);
