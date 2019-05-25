@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthLoginDTO} from '@/_dto';
-import {AlertService, AuthService} from '@/_service';
+import {AuthLoginDto} from '@/_dto';
+import {AuthService} from '@/_service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AlertHelper} from '@/_helper';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
 
     constructor(private authService: AuthService,
-                private alertService: AlertService,
+                private alertService: AlertHelper,
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router) {
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        const payload = new AuthLoginDTO(this.loginForm.value.email, this.loginForm.value.password);
+        const payload = new AuthLoginDto(this.loginForm.value.email, this.loginForm.value.password);
         this.authService.login(payload)
             .then(_ => this.router.navigate([this.returnUrl]))
             .catch((error) => this.alertService.error(error));

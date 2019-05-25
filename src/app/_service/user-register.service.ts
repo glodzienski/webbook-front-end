@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpService} from '@/_service/http.service';
+import {HttpHelper} from '@/_helper/http.helper';
 import {User} from '@/_model';
 
 @Injectable({
@@ -7,7 +7,7 @@ import {User} from '@/_model';
 })
 export class UserRegisterService {
 
-    constructor(private httpService: HttpService) {
+    constructor(private httpService: HttpHelper) {
     }
 
     public register(user: User) {

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertService, UserRegisterService} from '@/_service';
+import {UserRegisterService} from '@/_service';
 import {User} from '@/_model';
+import {AlertHelper} from '@/_helper';
 
 @Component({
     selector: 'app-login',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
 
     constructor(private userRegisterService: UserRegisterService,
-                private alertService: AlertService,
+                private alertService: AlertHelper,
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router) {

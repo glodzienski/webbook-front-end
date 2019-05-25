@@ -46,7 +46,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ErrorInterceptor} from '@/_helper/error.interceptor';
+import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -101,7 +101,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         NgxMaskModule.forRoot(options)
     ],
     providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorHelper, multi: true},
         MatNativeDateModule
     ],
     bootstrap: [AppComponent]

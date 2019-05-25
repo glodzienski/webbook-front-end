@@ -1,15 +1,14 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {AuthLoginDTO} from '@/_dto';
-import {HttpService} from '@/_service/http.service';
-import {AuthTokenDTO} from '@/_dto/AuthTokenDTO';
+import {AuthLoginDto, AuthTokenDto} from '@/_dto';
+import {HttpHelper} from '@/_helper/http.helper';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
     private currentTokenSubject: BehaviorSubject<any>;
     public currentTokenObservable: Observable<any>;
 
-    constructor(private httpService: HttpService) {
+    constructor(private httpService: HttpHelper) {
         this.currentTokenSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('token')));
         this.currentTokenObservable = this.currentTokenSubject.asObservable();
     }
@@ -22,8 +21,8 @@ export class AuthService {
         return this.currentTokenSubject.value;
     }
 
-    login(authLoginDTO: AuthLoginDTO) {
-        return this.httpService.$_post<AuthTokenDTO>('auth/login', authLoginDTO)
+    login(authLoginDTO: AuthLoginDto) {
+        return this.httpService.$_post<AuthTokenDto>('auth/login', authLoginDTO)
             .then(({token}) => {
                 localStorage.setItem('token', JSON.stringify(token));
                 this.currentTokenSubject.next(token);
