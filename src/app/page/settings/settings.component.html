@@ -11,7 +11,7 @@
                     </mat-expansion-panel-header>
                     <app-user-form [(model)]="currentUser" [(isValid)]="isValidToSaveUser"></app-user-form>
                     <mat-action-row>
-                        <button mat-raised-button (click)="nextStep()" [disabled]="!isValidToSaveUser" color="primary">Salvar</button>
+                        <button mat-raised-button (click)="onClickUpdate()" [disabled]="!isValidToSaveUser" color="primary">Salvar</button>
                     </mat-action-row>
                 </mat-expansion-panel>
                 <mat-expansion-panel [expanded]="isStep(1)" (opened)="setStep(1)">
@@ -29,3 +29,4 @@
         </mat-card-content>
     </mat-card>
 </div>
+<app-loading *ngIf="isRequesting"></app-loading>

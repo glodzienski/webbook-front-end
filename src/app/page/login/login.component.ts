@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
 
     constructor(private authService: AuthService,
-                private alertService: AlertHelper,
+                private alertHelper: AlertHelper,
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router) {
@@ -41,6 +41,6 @@ export class LoginComponent implements OnInit {
         const payload = new AuthLoginDto(this.loginForm.value.email, this.loginForm.value.password);
         this.authService.login(payload)
             .then(_ => this.router.navigate([this.returnUrl]))
-            .catch((error) => this.alertService.error(error));
+            .catch((error) => this.alertHelper.error(error));
     }
 }

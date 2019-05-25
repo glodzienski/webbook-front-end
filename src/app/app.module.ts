@@ -47,6 +47,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
+import { LoadingComponent } from './_component/loading/loading.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -57,7 +58,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         LoginComponent,
         RegisterComponent,
         SettingsComponent,
-        UserFormComponent
+        UserFormComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,

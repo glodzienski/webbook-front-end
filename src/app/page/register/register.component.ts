@@ -13,9 +13,8 @@ export class RegisterComponent implements OnInit {
     public currentUser: User;
     public isValidToSaveUser: boolean;
 
-    constructor(private userRegisterService: UserService,
-                private alertService: AlertHelper,
-                private route: ActivatedRoute,
+    constructor(private userService: UserService,
+                private alertHelper: AlertHelper,
                 private router: Router) {
     }
 
@@ -29,11 +28,11 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
-        this.userRegisterService.store(this.currentUser)
+        this.userService.store(this.currentUser)
             .then(_ => {
-                this.alertService.success('Parabéns, agora você possui uma conta WebBook.');
+                this.alertHelper.success('Parabéns, agora você possui uma conta WebBook.');
                 this.router.navigate(['login']);
             })
-            .catch((error) => this.alertService.error(error));
+            .catch((error) => this.alertHelper.error(error));
     }
 }

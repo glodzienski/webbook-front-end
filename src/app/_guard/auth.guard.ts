@@ -15,8 +15,6 @@ export class AuthGuard implements CanActivate {
         const isLogged = this.authService.currentToken;
         const signRoutes = ['login', 'register'].includes(route.routeConfig.path);
 
-        debugger;
-
         if (signRoutes) {
             if (isLogged) {
                 this.router.navigate(['/']);

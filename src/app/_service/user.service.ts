@@ -16,6 +16,6 @@ export class UserService {
     }
 
     public update(user: User) {
-        return this.httpHelper.$_put(this.apiEndpoint, user);
+        return this.httpHelper.$_put(`${this.apiEndpoint}/${user.code}`, user);
     }
 }

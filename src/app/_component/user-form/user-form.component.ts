@@ -21,16 +21,16 @@ export class UserFormComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.user = this.model;
         this.userForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
+            email: [this.model.email, [Validators.required, Validators.email]],
             password: ['', Validators.required],
-            cpf: ['', Validators.required],
-            birthdayDate: ['', Validators.required],
-            name: ['', Validators.required],
-            lastName: ['', Validators.required]
+            cpf: [this.model.cpf, Validators.required],
+            birthdayDate: [this.model.birthdayDate, Validators.required],
+            name: [this.model.name, Validators.required],
+            lastName: [this.model.lastName, Validators.required]
         });
         this.registerFormBuilderOnChangeEventListener();
-        this.user = this.model;
     }
 
     private registerFormBuilderOnChangeEventListener(): void {
