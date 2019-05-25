@@ -9,7 +9,7 @@
                             Geral
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <app-user-form [(model)]="teste"></app-user-form>
+                    <app-user-form [(model)]="currentUser" [(isValid)]="isValidToSaveUser"></app-user-form>
                     <mat-action-row>
                         <button mat-button (click)="nextStep()" class="indigo white-text">Salvar</button>
                     </mat-action-row>

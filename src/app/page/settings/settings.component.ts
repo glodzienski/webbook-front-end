@@ -7,7 +7,8 @@ import {User} from '@/_model';
     styleUrls: ['./settings.component.less']
 })
 export class SettingsComponent implements OnInit {
-    public teste: User;
+    public currentUser: User;
+    public isValidToSaveUser: boolean;
     private _step;
 
     constructor() {
@@ -15,7 +16,8 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.setStep(0);
-        this.teste = new User();
+        this.currentUser = new User();
+        this.isValidToSaveUser = false;
     }
 
 

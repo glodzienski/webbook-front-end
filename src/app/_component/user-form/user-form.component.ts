@@ -10,8 +10,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class UserFormComponent implements OnInit {
     private user: User;
     userForm: FormGroup;
+
     @Input() model: User;
     @Output() modelChange = new EventEmitter();
+
+    @Input() isValid: boolean;
+    @Output() isValidChange = new EventEmitter();
 
     constructor(private formBuilder: FormBuilder) {
     }
@@ -33,6 +37,7 @@ export class UserFormComponent implements OnInit {
         this.userForm.valueChanges.subscribe(values => {
             Object.assign(this.user, values);
             this.modelChange.emit(this.user);
+            this.isValidChange.emit(!this.userForm.invalid);
         });
     }
 }
