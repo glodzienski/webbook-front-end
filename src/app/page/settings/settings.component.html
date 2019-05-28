@@ -30,12 +30,7 @@
                             Endereço
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-
-                    <button mat-raised-button (click)="onClickRegisterAddress()" color="primary">Novo</button>
-
-                    <mat-action-row>
-                        <button mat-raised-button (click)="onClickUpdate()" [disabled]="!isValidToSaveUser" color="primary">Salvar</button>
-                    </mat-action-row>
+                    <app-address-settings></app-address-settings>
                 </mat-expansion-panel>
             </mat-accordion>
         </mat-card-content>

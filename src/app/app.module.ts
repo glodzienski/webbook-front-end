@@ -48,7 +48,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
 import {LoadingComponent} from './_component/loading/loading.component';
-import {AddressModalComponent} from './_component/address-modal/address-modal.component';
+import {AddressRegisterModalComponent} from './_component/address-register-modal/address-register-modal.component';
+import { AddressSettingsComponent } from './_component/address-settings/address-settings.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -61,10 +62,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         SettingsComponent,
         UserFormComponent,
         LoadingComponent,
-        AddressModalComponent
+        AddressRegisterModalComponent,
+        AddressSettingsComponent
     ],
     entryComponents: [
-        AddressModalComponent
+        AddressRegisterModalComponent
     ],
     imports: [
         BrowserModule,

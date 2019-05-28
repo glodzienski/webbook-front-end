@@ -14,4 +14,12 @@ export class AddressService {
     public store(address: Address) {
         return this.httpHelper.$_post(this.apiEndpoint, address);
     }
+
+    public get(): any {
+        return this.httpHelper.$_get<Address>(this.apiEndpoint);
+    }
+
+    public delete(address: Address): any {
+        return this.httpHelper.$_delete(`${this.apiEndpoint}/${address.code}`);
+    }
 }

@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '@/_model';
 import {AuthService, UserService} from '@/_service';
 import {AlertHelper} from '@/_helper';
-import {MatDialog} from '@angular/material';
-import {AddressModalComponent} from '@/_component/address-modal/address-modal.component';
 
 @Component({
     selector: 'app-settings',
@@ -18,11 +16,10 @@ export class SettingsComponent implements OnInit {
 
     constructor(private authService: AuthService,
                 private userService: UserService,
-                private alertHelper: AlertHelper,
-                public modal: MatDialog) {
+                private alertHelper: AlertHelper) {
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.setStep(0);
         this.currentUser = this.authService.currentUser;
         this.isValidToSaveUser = false;
@@ -30,15 +27,15 @@ export class SettingsComponent implements OnInit {
     }
 
 
-    isStep(value: number): boolean {
+    public isStep(value: number): boolean {
         return this._step === value;
     }
 
-    setStep(value: number): void {
+    public setStep(value: number): void {
         this._step = value;
     }
 
-    onClickUpdate(): void {
+    public onClickUpdate(): void {
         if (!this.isValidToSaveUser) {
             return;
         }
@@ -51,11 +48,5 @@ export class SettingsComponent implements OnInit {
             })
             .catch(error => this.alertHelper.error(error))
             .finally(() => (this.isRequesting = false));
-    }
-
-    onClickRegisterAddress(): void {
-        this.modal.open(AddressModalComponent, {
-            width: '80%',
-        });
     }
 }

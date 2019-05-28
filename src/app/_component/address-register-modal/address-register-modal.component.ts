@@ -6,14 +6,14 @@ import {AlertHelper} from '@/_helper';
 import {MatDialogRef} from '@angular/material';
 
 @Component({
-    selector: 'app-address-modal',
-    templateUrl: './address-modal.component.html',
-    styleUrls: ['./address-modal.component.less']
+    selector: 'app-address-register-modal',
+    templateUrl: './address-register-modal.component.html',
+    styleUrls: ['./address-register-modal.component.less']
 })
-export class AddressModalComponent implements OnInit {
+export class AddressRegisterModalComponent implements OnInit {
     public addressForm: FormGroup;
 
-    constructor(private dialogRef: MatDialogRef<AddressModalComponent>,
+    constructor(private dialogRef: MatDialogRef<AddressRegisterModalComponent>,
                 private formBuilder: FormBuilder,
                 private addressService: AddressService,
                 private alertHelper: AlertHelper) {
@@ -32,7 +32,6 @@ export class AddressModalComponent implements OnInit {
     }
 
     public onClickRegisterAddress(): void {
-        debugger;
         if (this.addressForm.invalid) {
             this.alertHelper.warn('Faltaram algumas informações, que tal checar o formulário?')
             return;
