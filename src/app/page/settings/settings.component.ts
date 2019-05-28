@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '@/_model';
 import {AuthService, UserService} from '@/_service';
 import {AlertHelper} from '@/_helper';
-import {ActivatedRoute, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {AddressModalComponent} from '@/_component/address-modal/address-modal.component';
 
 @Component({
     selector: 'app-settings',
@@ -17,7 +18,8 @@ export class SettingsComponent implements OnInit {
 
     constructor(private authService: AuthService,
                 private userService: UserService,
-                private alertHelper: AlertHelper) {
+                private alertHelper: AlertHelper,
+                public modal: MatDialog) {
     }
 
     ngOnInit() {
@@ -49,5 +51,11 @@ export class SettingsComponent implements OnInit {
             })
             .catch(error => this.alertHelper.error(error))
             .finally(() => (this.isRequesting = false));
+    }
+
+    onClickRegisterAddress(): void {
+        this.modal.open(AddressModalComponent, {
+            width: '80%',
+        });
     }
 }
