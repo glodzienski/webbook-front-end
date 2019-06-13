@@ -10,7 +10,9 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
 import {RegisterComponent} from './page/register/register.component';
-import { BookDetailComponent } from './_component/book-detail/book-detail.component';
+import {SettingsComponent} from './page/settings/settings.component';
+impor {BookDetailComponent} from './_component/book-detail/book-detail.component';
+import {UserFormComponent} from './_component/user-form/user-form.component';
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -46,8 +48,10 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ErrorInterceptor} from '@/_helper/error.interceptor';
-import { SettingsComponent } from './page/settings/settings.component';
+import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
+import {LoadingComponent} from './_component/loading/loading.component';
+import {AddressRegisterModalComponent} from './_component/address-register-modal/address-register-modal.component';
+import { AddressSettingsComponent } from './_component/address-settings/address-settings.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -58,10 +62,15 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         LoginComponent,
         RegisterComponent,
         SettingsComponent,
-        BookDetailComponent
+        UserFormComponent,
+        LoadingComponent,
+        AddressRegisterModalComponent,
+        AddressSettingsComponent,
+        BookDetailComponent,
     ],
     entryComponents: [
-      BookDetailComponent
+        AddressRegisterModalComponent,
+        BookDetailComponent,
     ],
     imports: [
         BrowserModule,
@@ -106,7 +115,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         NgxMaskModule.forRoot(options)
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorHelper, multi: true},
         MatNativeDateModule
     ],
     bootstrap: [AppComponent]

@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col s12">
+        <table *ngIf="hasContentToShowTable()" mat-table [dataSource]="addresses" class="mat-elevation-z2">
+            <ng-container matColumnDef="zipCode">
+                <th mat-header-cell *matHeaderCellDef> CEP </th>
+                <td mat-cell *matCellDef="let address"> {{address.zipCode}} </td>
+            </ng-container>
+            <ng-container matColumnDef="country">
+                <th mat-header-cell *matHeaderCellDef> País </th>
+                <td mat-cell *matCellDef="let address"> {{address.country}} </td>
+            </ng-container>
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let address"> {{address.state}} </td>
+            </ng-container>
+            <ng-container matColumnDef="city">
+                <th mat-header-cell *matHeaderCellDef> Cidade </th>
+                <td mat-cell *matCellDef="let address"> {{address.city}} </td>
+            </ng-container>
+            <ng-container matColumnDef="neighborhood">
+                <th mat-header-cell *matHeaderCellDef> Bairro </th>
+                <td mat-cell *matCellDef="let address"> {{address.neighborhood}} </td>
+            </ng-container>
+            <ng-container matColumnDef="street">
+                <th mat-header-cell *matHeaderCellDef> Logradouro </th>
+                <td mat-cell *matCellDef="let address"> {{address.street}} </td>
+            </ng-container>
+            <ng-container matColumnDef="number">
+                <th mat-header-cell *matHeaderCellDef> Número </th>
+                <td mat-cell *matCellDef="let address"> {{address.number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="delete" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef> Deletar</th>
+                <td mat-cell *matCellDef="let address">
+                    <button mat-mini-fab
+                            color="warn"
+                            class="cursor pointer"
+                            (click)="onClickDeleteAddress(address)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="addressesTableDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: addressesTableDisplayedColumns;"></tr>
+        </table>
+        <mat-card *ngIf="!hasContentToShowTable()" class="indigo accent-2">Sem endereços cadastrados</mat-card>
+    </div>
+    <div class="col s12 right-align mt-15">
+        <button mat-raised-button (click)="onClickRegisterAddress()" color="primary">Novo</button>
+    </div>
+</div>
+<app-loading *ngIf="isRequesting"></app-loading>

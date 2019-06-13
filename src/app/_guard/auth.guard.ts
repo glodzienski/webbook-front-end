@@ -25,6 +25,7 @@ export class AuthGuard implements CanActivate {
         }
 
         if (isLogged) {
+            this.authService.validate(isLogged);
             return true;
         }
 

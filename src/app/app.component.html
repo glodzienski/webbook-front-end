@@ -1,4 +1,4 @@
-<div [class.example-is-mobile]="mobileQuery.matches" class="app-container">
+<div [class.example-is-mobile]="mobileQuery.matches" id="app-container">
     <mat-toolbar color="primary" class="example-toolbar">
         <button *ngIf="isLogged" mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
@@ -27,8 +27,8 @@
             </mat-nav-list>
         </mat-sidenav>
 
-        <mat-sidenav-content>
-            <div class="container-fluid">
+        <mat-sidenav-content [ngClass]="isLogged ? 'grey lighten-3' : 'indigo'">
+            <div id="app-content" class="container-fluid">
                 <router-outlet></router-outlet>
             </div>
         </mat-sidenav-content>

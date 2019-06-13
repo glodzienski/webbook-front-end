@@ -1,4 +1,3 @@
 export {AuthService} from './auth.service';
-export {AlertService} from './alert.service';
-export {HttpService} from './http.service';
-export {UserRegisterService} from './user-register.service';
+export {UserService} from './user.service';
+export {AddressService} from './address.service';

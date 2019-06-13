@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Cadastrar endereço</h2>
+<mat-dialog-content class="mat-typography">
+    <div [formGroup]="addressForm" class="row">
+        <mat-form-field class="col s4">
+            <mat-label>CEP</mat-label>
+            <input mask="00000-000" matInput formControlName="zipCode" type="text">
+            <mat-error>Por favor, informe seu CEP</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col s8">
+            <mat-label>Logradouro</mat-label>
+            <input matInput formControlName="street" type="text">
+            <mat-error>Por favor, informe seu logradouro</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col s4">
+            <mat-label>País</mat-label>
+            <input matInput formControlName="country" type="text">
+            <mat-error>Por favor, informe seu país</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col s4">
+            <mat-label>Estado</mat-label>
+            <input matInput formControlName="state" type="text">
+            <mat-error>Por favor, informe seu estado</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col s4">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="city" type="text">
+            <mat-error>Por favor, informe sua cidade</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col s4">
+            <mat-label>Bairro</mat-label>
+            <input matInput formControlName="neighborhood" type="text">
+            <mat-error>Por favor, informe seu bairro</mat-error>
+        </mat-form-field>
+        <mat-form-field class="col s4">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName="number" type="number">
+            <mat-error>Por favor, informe o número</mat-error>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button
+            mat-dialog-close>Cancelar
+    </button>
+    <button mat-raised-button
+            cdkFocusInitial
+            (click)="onClickRegisterAddress()"
+            color="primary">
+        Cadastrar
+    </button>
+</mat-dialog-actions>

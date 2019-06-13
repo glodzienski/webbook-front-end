@@ -1,29 +1,31 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {AuthLoginDTO} from '@/_dto';
-import {HttpService} from '@/_service/http.service';
-import {AuthTokenDTO} from '@/_dto/AuthTokenDTO';
+import {AuthInfoDto, AuthLoginDto, AuthTokenDto} from '@/_dto';
+import {HttpHelper} from '@/_helper/http.helper';
+import {User} from '@/_model';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
     private currentTokenSubject: BehaviorSubject<any>;
     public currentTokenObservable: Observable<any>;
+    private currentUserSubject: BehaviorSubject<User>;
 
-    constructor(private httpService: HttpService) {
+    constructor(private httpHelper: HttpHelper) {
         this.currentTokenSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('token')));
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
         this.currentTokenObservable = this.currentTokenSubject.asObservable();
-    }
-
-    public refresh() {
-        this.currentTokenSubject.next(JSON.parse(localStorage.getItem('token')));
     }
 
     public get currentToken(): any {
         return this.currentTokenSubject.value;
     }
 
-    login(authLoginDTO: AuthLoginDTO) {
-        return this.httpService.$_post<AuthTokenDTO>('auth/login', authLoginDTO)
+    public get currentUser(): User {
+        return this.currentUserSubject.value;
+    }
+
+    login(authLoginDTO: AuthLoginDto) {
+        return this.httpHelper.$_post<AuthTokenDto>('auth/login', authLoginDTO)
             .then(({token}) => {
                 localStorage.setItem('token', JSON.stringify(token));
                 this.currentTokenSubject.next(token);
@@ -33,5 +35,15 @@ export class AuthService {
     logout() {
         localStorage.removeItem('token');
         this.currentTokenSubject.next(null);
+    }
+
+    validate(token: string) {
+        const authTokenDto = new AuthTokenDto();
+        authTokenDto.token = token;
+
+        this.httpHelper.$_post('auth/validate', authTokenDto)
+            .then((response: AuthInfoDto) => {
+                localStorage.setItem('user', JSON.stringify(response.user));
+            });
     }
 }
