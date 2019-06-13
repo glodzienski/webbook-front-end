@@ -10,6 +10,7 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
 import {RegisterComponent} from './page/register/register.component';
+import { BookDetailComponent } from './_component/book-detail/book-detail.component';
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -43,6 +44,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptor} from '@/_helper/error.interceptor';
 import { SettingsComponent } from './page/settings/settings.component';
@@ -55,7 +57,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        SettingsComponent
+        SettingsComponent,
+        BookDetailComponent
+    ],
+    entryComponents: [
+      BookDetailComponent
     ],
     imports: [
         BrowserModule,
@@ -94,6 +100,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
+        MatBottomSheetModule,
         ReactiveFormsModule,
         MatNativeDateModule,
         NgxMaskModule.forRoot(options)

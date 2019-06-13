@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {BookDetailComponent} from '@/_component/book-detail/book-detail.component';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 
 @Component({
     selector: 'app-home',
@@ -7,11 +9,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-    constructor() {
-    }
+  constructor(private _bottomSheet: MatBottomSheet) {
+
+  }
+  openBottomSheet(): void {
+    this._bottomSheet.open(BookDetailComponent);
+  }
 
     ngOnInit() {
 
     }
-
 }
