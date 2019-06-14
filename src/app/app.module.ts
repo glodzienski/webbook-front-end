@@ -11,6 +11,7 @@ import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
 import {RegisterComponent} from './page/register/register.component';
 import {SettingsComponent} from './page/settings/settings.component';
+import {BookDetailComponent} from './_component/book-detail/book-detail.component';
 import {UserFormComponent} from './_component/user-form/user-form.component';
 
 // Angular Material Components
@@ -45,6 +46,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
 import {LoadingComponent} from './_component/loading/loading.component';
@@ -63,10 +65,12 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         UserFormComponent,
         LoadingComponent,
         AddressRegisterModalComponent,
-        AddressSettingsComponent
+        AddressSettingsComponent,
+        BookDetailComponent,
     ],
     entryComponents: [
-        AddressRegisterModalComponent
+        AddressRegisterModalComponent,
+        BookDetailComponent,
     ],
     imports: [
         BrowserModule,
@@ -105,6 +109,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
+        MatBottomSheetModule,
         ReactiveFormsModule,
         MatNativeDateModule,
         NgxMaskModule.forRoot(options)
