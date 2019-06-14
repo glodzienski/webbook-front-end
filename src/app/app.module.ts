@@ -11,7 +11,7 @@ import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
 import {RegisterComponent} from './page/register/register.component';
 import {SettingsComponent} from './page/settings/settings.component';
-impor {BookDetailComponent} from './_component/book-detail/book-detail.component';
+import {BookDetailComponent} from './_component/book-detail/book-detail.component';
 import {UserFormComponent} from './_component/user-form/user-form.component';
 
 // Angular Material Components

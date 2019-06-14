@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BookDetailComponent} from '@/_component/book-detail/book-detail.component';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import {BookService} from '@/_service';
 
 @Component({
     selector: 'app-home',
@@ -8,8 +9,9 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
     styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
+    public books: Book[];
 
-  constructor(private _bottomSheet: MatBottomSheet) {
+  constructor(private _bottomSheet: MatBottomSheet, private bookService: BookService) {
 
   }
   openBottomSheet(): void {
@@ -17,6 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
     ngOnInit() {
-
+      this.bookService.get()
+        .then(books => (this.books = books));
     }
 }
