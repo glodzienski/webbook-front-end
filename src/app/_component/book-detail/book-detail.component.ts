@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import {MAT_BOTTOM_SHEET_DATA} from '@angular/material';
+import {Book} from '@/_model';
 
 
 @Component({
@@ -8,10 +10,10 @@ import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
   styleUrls: ['./book-detail.component.less']
 })
 export class BookDetailComponent {
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BookDetailComponent>) {}
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: Book) {}
 
   openLink(event: MouseEvent): void {
-    this._bottomSheetRef.dismiss();
+    // this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
 }

@@ -14,8 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private _bottomSheet: MatBottomSheet, private bookService: BookService) {
 
   }
-  openBottomSheet(): void {
-    this._bottomSheet.open(BookDetailComponent);
+  openBottomSheet(book: Book): void {
+    this._bottomSheet.open(BookDetailComponent, {
+      data: book
+    });
   }
 
     ngOnInit() {
