@@ -3,7 +3,7 @@ import {HttpRequest, HttpHandler, HttpEvent, HttpInterceptor} from '@angular/com
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
-import {AuthService} from '@/_service';
+import {AuthService} from '@/service';
 
 @Injectable()
 export class ErrorInterceptorHelper implements HttpInterceptor {

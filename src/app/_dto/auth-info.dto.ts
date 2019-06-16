@@ -1,4 +1,4 @@
-import {User} from '@/_model';
+import {User} from '@/model';
 
 export class AuthInfoDto {
     user: User;

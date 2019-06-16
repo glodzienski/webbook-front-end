@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Address} from '@/_model';
+import {Address} from '@/model';
 import {HttpHelper} from '@/_helper';
 
 @Injectable({

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {AuthInfoDto, AuthLoginDto, AuthTokenDto} from '@/_dto';
 import {HttpHelper} from '@/_helper/http.helper';
-import {User} from '@/_model';
+import {User} from '@/model';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {

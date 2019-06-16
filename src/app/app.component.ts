@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {AuthService} from '@/_service';
+import {AuthService} from '@/service';
 import {Router} from '@angular/router';
 
 @Component({

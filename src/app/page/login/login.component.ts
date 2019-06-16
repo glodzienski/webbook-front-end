@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthLoginDto} from '@/_dto';
-import {AuthService} from '@/_service';
+import {AuthService} from '@/service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertHelper} from '@/_helper';

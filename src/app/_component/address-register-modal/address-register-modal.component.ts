@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AddressService} from '@/_service';
-import {Address} from '@/_model';
+import {AddressService} from '@/service';
+import {Address} from '@/model';
 import {AlertHelper} from '@/_helper';
 import {MatDialogRef} from '@angular/material';
 

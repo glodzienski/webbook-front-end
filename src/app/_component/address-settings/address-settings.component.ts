@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AddressRegisterModalComponent} from '@/_component/address-register-modal/address-register-modal.component';
 import {MatDialog} from '@angular/material';
-import {Address} from '@/_model';
-import {AddressService} from '@/_service';
+import {Address} from '@/model';
+import {AddressService} from '@/service';
 import {AlertHelper} from '@/_helper';
 
 @Component({

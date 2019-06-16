@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '@/_model';
-import {AuthService, UserService} from '@/_service';
+import {User} from '@/model';
+import {AuthService, UserService} from '@/service';
 import {AlertHelper} from '@/_helper';
 
 @Component({

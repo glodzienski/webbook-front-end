@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {User} from '@/_model';
+import {User} from '@/model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService} from '@/_service';
-import {User} from '@/_model';
+import {UserService} from '@/service';
+import {User} from '@/model';
 import {AlertHelper} from '@/_helper';
 
 @Component({
