@@ -52,6 +52,7 @@ import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
 import {LoadingComponent} from './_component/loading/loading.component';
 import {AddressRegisterModalComponent} from './_component/address-register-modal/address-register-modal.component';
 import { AddressSettingsComponent } from './_component/address-settings/address-settings.component';
+import { SubscriptionComponent } from './page/subscription/subscription.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -67,6 +68,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         AddressRegisterModalComponent,
         AddressSettingsComponent,
         BookDetailComponent,
+        SubscriptionComponent,
     ],
     entryComponents: [
         AddressRegisterModalComponent,
