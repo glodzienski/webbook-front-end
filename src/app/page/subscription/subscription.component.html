@@ -1,75 +1,19 @@
-<BR>
-<BR>
-<BR>
-<div class="demo">
-  <div class="container">
+<div class="container" *ngIf="true">
     <div class="row">
-      <div class="col-md-4 col-sm-6">
-        <div class="pricingTable">
-          <div class="pricingTable-header">
-            <h3 class="title">Mensal</h3>
-            <div class="price-value">
-              <span class="currency">R$</span>
-              <span class="amount">15,00</span>
-            </div>
-          </div>
-          <mat-form-field>
-            <mat-label>OPCAO 01</mat-label>
-            <select matNativeControl required>
-              <option value="INFO01">INFO 01</option>
-              <option value="INFO02">INFO 02</option>
-              <option value="INFO03">INFO 03</option>
-              <option value="INFO04">INFO 04</option>
-            </select>
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <mat-label>OPCAO 02</mat-label>
-            <select matNativeControl required>
-              <option value="INFO01">INFO 01</option>
-              <option value="INFO02">INFO 02</option>
-              <option value="INFO03">INFO 03</option>
-              <option value="INFO04">INFO 04</option>
-            </select>
-          </mat-form-field>
-          <a href="#" class="pricingTable-signup">Assinar</a>
+        <div class="col s6 offset-s3 mt-50" *ngIf="false">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Plano</mat-card-title>
+                    <mat-card-subtitle>Valor</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions class="right-align">
+                    <button mat-raised-button color="warn">Cancelar</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
-      </div>
-      <BR>
-      <BR>
-      <BR>
-      <BR>
-      <div class="col-md-4 col-sm-6">
-        <div class="pricingTable">
-          <div class="pricingTable-header">
-            <h3 class="title">Anual</h3>
-            <div class="price-value">
-              <span class="currency">R$</span>
-              <span class="amount">150,00</span>
-            </div>
-          </div>
-          <mat-form-field>
-            <mat-label>OPCAO 01</mat-label>
-            <select matNativeControl required>
-              <option value="INFO01">INFO 01</option>
-              <option value="INFO02">INFO 02</option>
-              <option value="INFO03">INFO 03</option>
-              <option value="INFO04">INFO 04</option>
-            </select>
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <mat-label>OPCAO 02</mat-label>
-            <select matNativeControl required>
-              <option value="INFO01">INFO 01</option>
-              <option value="INFO02">INFO 02</option>
-              <option value="INFO03">INFO 03</option>
-              <option value="INFO04">INFO 04</option>
-            </select>
-          </mat-form-field>
-          <a href="#" class="pricingTable-signup">Assinar</a>
+        <div class="col s6 offset-s3 mt-50 center-align" *ngIf="true">
+            <h3>Você não possui plano contratado!</h3>
+            <button mat-raised-button color="primary" (click)="onClickRegisterSubscription()">Contratar plano</button>
         </div>
-      </div>
     </div>
-  </div>
 </div>

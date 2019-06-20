@@ -13,6 +13,11 @@ import {RegisterComponent} from './page/register/register.component';
 import {SettingsComponent} from './page/settings/settings.component';
 import {BookDetailComponent} from './_component/book-detail/book-detail.component';
 import {UserFormComponent} from './_component/user-form/user-form.component';
+import {LoadingComponent} from './_component/loading/loading.component';
+import {AddressRegisterModalComponent} from './_component/address-register-modal/address-register-modal.component';
+import {AddressSettingsComponent} from './_component/address-settings/address-settings.component';
+import {SubscriptionComponent} from './page/subscription/subscription.component';
+import {SubscriptionRegisterModalComponent} from './_component/subscription-register-modal/subscription-register-modal.component';
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -49,10 +54,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
-import {LoadingComponent} from './_component/loading/loading.component';
-import {AddressRegisterModalComponent} from './_component/address-register-modal/address-register-modal.component';
-import { AddressSettingsComponent } from './_component/address-settings/address-settings.component';
-import { SubscriptionComponent } from './page/subscription/subscription.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -69,10 +70,12 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         AddressSettingsComponent,
         BookDetailComponent,
         SubscriptionComponent,
+        SubscriptionRegisterModalComponent,
     ],
     entryComponents: [
         AddressRegisterModalComponent,
         BookDetailComponent,
+        SubscriptionRegisterModalComponent
     ],
     imports: [
         BrowserModule,

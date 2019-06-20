@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SubscriptionService} from '@/service/subscription.service';
-import {Address, Plan, Subscription} from '@/model';
-import {PlanService} from '@/service/plan.service';
-import {AddressService} from '@/service';
+import {Subscription} from '@/model';
+import {MatDialog} from '@angular/material';
+import {SubscriptionRegisterModalComponent} from '@/_component/subscription-register-modal/subscription-register-modal.component';
 
 @Component({
     selector: 'app-signature',
@@ -11,25 +11,26 @@ import {AddressService} from '@/service';
 })
 export class SubscriptionComponent implements OnInit {
     public subscription: Subscription;
-    public plans: Plan[];
-    public addresses: Address[];
 
-
-    constructor(private subscriptionService: SubscriptionService,
-                private planService: PlanService,
-                private addressService: AddressService) {
+    constructor(public modal: MatDialog,
+                private subscriptionService: SubscriptionService) {
     }
 
     ngOnInit() {
-
-        this.subscriptionService.get()
-            .then(subscription => (this.subscription = subscription));
-
-        this.planService.get()
-            .then(plans => (this.plans = plans));
-
-        this.addressService.get()
-            .then(addresses => (this.addresses = addresses));
+        this.getSubscriptions();
     }
 
+    private getSubscriptions(): void {
+        this.subscriptionService.get()
+            .then(subscription => (this.subscription = subscription));
+    }
+
+    public onClickRegisterSubscription(): void {
+        this.modal
+            .open(SubscriptionRegisterModalComponent, {
+                width: '20%'
+            })
+            .afterClosed()
+            .subscribe(_ => (this.getSubscriptions()));
+    }
 }

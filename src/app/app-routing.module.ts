@@ -8,13 +8,13 @@ import {SettingsComponent} from '@/page/settings/settings.component';
 import {SubscriptionComponent} from '@/page/subscription/subscription.component';
 
 const routes: Routes = [
-    {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+    {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
     {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
     {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
     {path: 'subscription', component: SubscriptionComponent, canActivate: [AuthGuard]},
     // otherwise redirect to home
-    {path: '**', redirectTo: ''}
+    {path: '**', component: HomeComponent}
 ];
 
 @NgModule({
