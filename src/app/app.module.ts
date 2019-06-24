@@ -42,6 +42,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptor} from '@/_helper/error.interceptor';
+import { ReadingbookComponent } from './page/readingbook/readingbook.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {ErrorInterceptor} from '@/_helper/error.interceptor';
         AppComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        ReadingbookComponent
     ],
     imports: [
         BrowserModule,

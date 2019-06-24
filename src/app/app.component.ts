@@ -7,6 +7,7 @@ import {AuthService} from '@/_service'
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.less']
 })
+
 export class AppComponent implements OnDestroy, OnInit {
     mobileQuery: MediaQueryList;
 
