@@ -7,3 +7,4 @@ export {Author} from './author';
 export {Publisher} from './publisher';
 export {BookCategory} from './bookCategory';
 export {BookInfo} from './bookInfo';
+export {BookFavorite} from './bookFavorite';
