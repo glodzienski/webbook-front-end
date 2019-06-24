@@ -1,0 +1,110 @@
+.demo{ background: #e7e7e7; }
+.pricingTable{
+  background-color: #fff;
+  font-family: 'Krub', sans-serif;
+  text-align: center;
+  padding: 0 0 10px;
+  margin: 0 30px;
+  border: 5px solid #334ce8;
+  position: relative;
+  z-index: 1;
+  transition:all 0.3s;
+}
+.pricingTable .pricingTable-header{
+  color: #fff;
+  background-color: #334ce8;
+  padding: 15px 0 50px;
+  margin: 0 0 35px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s;
+}
+.pricingTable:hover .pricingTable-header{ text-shadow: 0 0 5px #000; }
+.pricingTable .pricingTable-header:after{
+  content: '';
+  background-color: #334ce8;
+  height: 50px;
+  width: 50px;
+  transform: translateX(-50%) rotate(45deg);
+  position: absolute;
+  left: 50%;
+  bottom: -25px;
+}
+.pricingTable .title{
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 15px;
+}
+.pricingTable .currency{
+  font-size: 30px;
+  vertical-align: top;
+  display: inline-block;
+}
+.pricingTable .amount{
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 60px;
+  display: inline-block;
+}
+.pricingTable .month{
+  font-size: 18px;
+  margin-left: -5px;
+  display: block;
+}
+.pricingTable .pricing-content{
+  color: #505050;
+  text-align: center;
+  padding: 0;
+  margin:0 auto 20px;
+  list-style: none;
+  display: inline-block;
+}
+.pricingTable .pricing-content li{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 45px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  padding: 10px 20px 10px;
+  border-bottom: 2px solid #334ce8;
+  position: relative;
+}
+.pricingTable .pricing-content li:last-child{ border-bottom: none; }
+.pricingTable .pricing-content li:after{
+  content: "\f00c";
+  color: #fff;
+  background-color: #334ce8;
+  font-family: "Font Awesome 5 Free";
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+}
+.pricingTable .pricing-content li:last-child:after{ display: none; }
+.pricingTable .pricingTable-signup{
+  color: #fff;
+  background-color: #334ce8;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 80%;
+  padding: 15px 25px;
+  margin: 0 auto;
+  border: 3px solid #fff;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s;
+}
+.pricingTable .pricingTable-signup:hover{
+  box-shadow: 0 0 10px #000;
+  text-shadow: 0 0 5px #000;
+}
