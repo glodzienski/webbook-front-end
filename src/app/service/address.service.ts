@@ -16,7 +16,7 @@ export class AddressService {
     }
 
     public get(): any {
-        return this.httpHelper.$_get<Address>(this.apiEndpoint);
+        return this.httpHelper.$_get<Address[]>(this.apiEndpoint);
     }
 
     public delete(address: Address): any {
