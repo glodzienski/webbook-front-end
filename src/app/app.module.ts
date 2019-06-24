@@ -9,6 +9,7 @@ import {IConfig, NgxMaskModule} from 'ngx-mask';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
+import { MyFavoriteBooksComponent } from './page/my-favorite-books/my-favorite-books.component';
 import {RegisterComponent} from './page/register/register.component';
 import {SettingsComponent} from './page/settings/settings.component';
 import {BookDetailComponent} from './_component/book-detail/book-detail.component';
@@ -71,6 +72,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         BookDetailComponent,
         SubscriptionComponent,
         SubscriptionRegisterModalComponent,
+        MyFavoriteBooksComponent,
     ],
     entryComponents: [
         AddressRegisterModalComponent,
