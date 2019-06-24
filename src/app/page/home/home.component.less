@@ -15,7 +15,7 @@ h4 {
     text-align: center;
 }
 
-button {
+.btn1 {
   z-index: 1;
   position: relative;
   font-size: inherit;
@@ -32,7 +32,7 @@ button {
   width: 100px;
 }
 
-button::before {
+.btn1::before {
   content: '';
   z-index: -1;
   position: absolute;
@@ -47,12 +47,12 @@ button::before {
   transition: transform 0.45s ease-in-out;
 }
 
-button:hover {
+.btn1:hover {
   cursor: pointer;
   color: #161616;
 }
 
-button:hover::before {
+.btn1:hover::before {
   transform: translate(-50%, -50%) scale(15);
 }
 
