@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material';
 import {AddressService} from '@/service';
 import {AlertHelper} from '@/_helper';
-import {Address, Plan} from '@/model';
+import {Address, Plan, Subscription} from '@/model';
 import {PlanService} from '@/service/plan.service';
+import {SubscriptionService} from '@/service/subscription.service';
 
 @Component({
     selector: 'app-subscription-register-modal',
@@ -20,6 +21,7 @@ export class SubscriptionRegisterModalComponent implements OnInit {
                 private formBuilder: FormBuilder,
                 private planService: PlanService,
                 private addressService: AddressService,
+                private subscriptionService: SubscriptionService,
                 private alertHelper: AlertHelper) {
     }
 
@@ -28,23 +30,27 @@ export class SubscriptionRegisterModalComponent implements OnInit {
             .then(plans => (this.plans = plans));
         this.addressService.get()
             .then(addresses => (this.addresses = addresses));
+
         this.subscriptionForm = this.formBuilder.group({
-            zipCode: ['', Validators.required]
+            plan: ['', Validators.required],
+            address: ['', Validators.required]
         });
     }
 
     public onClickRegisterSubscription(): void {
+        debugger;
         if (this.subscriptionForm.invalid) {
             this.alertHelper.warn('Faltaram algumas informações, que tal checar o formulário?');
             return;
         }
 
-        const address = new Address();
-        Object.assign(address, this.subscriptionForm.value);
+        const subscription = new Subscription();
+        subscription.address = this.subscriptionForm.value.address as Address;
+        subscription.plan = this.subscriptionForm.value.plan as Plan;
 
-        this.addressService.store(address)
+        this.subscriptionService.store(subscription)
             .then(_ => {
-                this.alertHelper.success('Assinatura contratada com sucesso!');
+                this.alertHelper.success('Plano assinado com sucesso!');
                 this.dialogRef.close();
             })
             .catch(error => this.alertHelper.error(error));

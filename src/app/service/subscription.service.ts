@@ -11,12 +11,16 @@ export class SubscriptionService {
     constructor(private httpHelper: HttpHelper) {
     }
 
-    store() {
-        // TODO: falta implementar
+    public store(subscription: Subscription): any {
+        return this.httpHelper.$_post(this.apiEndpoint, subscription);
     }
 
     public get(): any {
         return this.httpHelper.$_get<Subscription>(this.apiEndpoint);
+    }
+
+    public cancel(subscription: Subscription): any {
+        return this.httpHelper.$_delete(`${this.apiEndpoint}\/${subscription.code}`);
     }
 }
 
