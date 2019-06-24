@@ -26,4 +26,8 @@ export class HomeComponent implements OnInit {
             data: book
         });
     }
+
+    onClickFavorite(book: Book): void {
+      this.bookService.favorite(book);
+    }
 }
