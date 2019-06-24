@@ -2,15 +2,26 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {IConfig, NgxMaskModule} from 'ngx-mask';
+
+// Components
+import {AppComponent} from './app.component';
 import {HomeComponent} from './page/home/home.component';
 import {LoginComponent} from './page/login/login.component';
 import {RegisterComponent} from './page/register/register.component';
+import {SettingsComponent} from './page/settings/settings.component';
+import {BookDetailComponent} from './_component/book-detail/book-detail.component';
+import {UserFormComponent} from './_component/user-form/user-form.component';
+import {LoadingComponent} from './_component/loading/loading.component';
+import {AddressRegisterModalComponent} from './_component/address-register-modal/address-register-modal.component';
+import {AddressSettingsComponent} from './_component/address-settings/address-settings.component';
+import {SubscriptionComponent} from './page/subscription/subscription.component';
+import {SubscriptionRegisterModalComponent} from './_component/subscription-register-modal/subscription-register-modal.component';
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCheckboxModule} from '@angular/material';
+import {MatCheckboxModule, MatNativeDateModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -40,10 +51,16 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+<<<<<<< HEAD
 import {ErrorInterceptor} from '@/_helper/error.interceptor';
 import { ReadingbookComponent } from './page/readingbook/readingbook.component';
+=======
+import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
+>>>>>>> b7dc5003edb0fd0195ce16681e317ea7a59ae2e0
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
     declarations: [
@@ -51,7 +68,23 @@ import { ReadingbookComponent } from './page/readingbook/readingbook.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+<<<<<<< HEAD
         ReadingbookComponent
+=======
+        SettingsComponent,
+        UserFormComponent,
+        LoadingComponent,
+        AddressRegisterModalComponent,
+        AddressSettingsComponent,
+        BookDetailComponent,
+        SubscriptionComponent,
+        SubscriptionRegisterModalComponent,
+    ],
+    entryComponents: [
+        AddressRegisterModalComponent,
+        BookDetailComponent,
+        SubscriptionRegisterModalComponent
+>>>>>>> b7dc5003edb0fd0195ce16681e317ea7a59ae2e0
     ],
     imports: [
         BrowserModule,
@@ -90,10 +123,14 @@ import { ReadingbookComponent } from './page/readingbook/readingbook.component';
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
-        ReactiveFormsModule
+        MatBottomSheetModule,
+        ReactiveFormsModule,
+        MatNativeDateModule,
+        NgxMaskModule.forRoot(options)
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorHelper, multi: true},
+        MatNativeDateModule
     ],
     bootstrap: [AppComponent]
 })

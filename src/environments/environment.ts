@@ -4,7 +4,11 @@
 
 export const environment = {
     production: false,
+<<<<<<< HEAD
     apiUrl: 'http://ec2-18-217-109-253.us-east-2.compute.amazonaws.com:8080/api/book'
+=======
+    apiUrl: 'http://ec2-18-217-109-253.us-east-2.compute.amazonaws.com:8080/api/'
+>>>>>>> b7dc5003edb0fd0195ce16681e317ea7a59ae2e0
 };
 
 /*

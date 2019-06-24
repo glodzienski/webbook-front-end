@@ -1,0 +1,39 @@
+<div class="container mt-15">
+    <mat-card>
+        <mat-card-title class="center-align">Configurações</mat-card-title>
+        <mat-card-content>
+            <mat-accordion class="example-headers-align">
+                <mat-expansion-panel [expanded]="isStep(0)" (opened)="setStep(0)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Geral
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-user-form [(model)]="currentUser" [(isValid)]="isValidToSaveUser"></app-user-form>
+                    <mat-action-row>
+                        <button mat-raised-button (click)="onClickUpdate()" [disabled]="!isValidToSaveUser" color="primary">Salvar</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="isStep(1)" (opened)="setStep(1)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Login
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <button mat-raised-button (click)="onClickUpdate()" [disabled]="!isValidToSaveUser" color="primary">Salvar</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="isStep(2)" (opened)="setStep(2)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Endereço
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-address-settings></app-address-settings>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>
+<app-loading *ngIf="isRequesting"></app-loading>

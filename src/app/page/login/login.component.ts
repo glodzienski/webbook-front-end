@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthLoginDTO} from '@/_dto';
-import {AlertService, AuthService} from '@/_service';
+import {AuthLoginDto} from '@/_dto';
+import {AuthService} from '@/service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AlertHelper} from '@/_helper';
 
 @Component({
     selector: 'app-login',
@@ -14,11 +15,11 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
 
     constructor(private authService: AuthService,
-                private alertService: AlertService,
+                private alertHelper: AlertHelper,
                 private formBuilder: FormBuilder,
                 private route: ActivatedRoute,
                 private router: Router) {
-        if (this.authService.currentUserValue) {
+        if (this.authService.currentToken) {
             this.router.navigate(['/']);
         }
     }
@@ -32,16 +33,14 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
     }
 
-    get f() { return this.loginForm.controls; }
-
     public onClickLogin = () => {
         if (this.loginForm.invalid) {
             return;
         }
 
-        const payload = new AuthLoginDTO(this.loginForm.value.email, this.loginForm.value.password);
+        const payload = new AuthLoginDto(this.loginForm.value.email, this.loginForm.value.password);
         this.authService.login(payload)
             .then(_ => this.router.navigate([this.returnUrl]))
-            .catch((error) => this.alertService.error(error));
+            .catch((error) => this.alertHelper.error(error));
     }
 }
