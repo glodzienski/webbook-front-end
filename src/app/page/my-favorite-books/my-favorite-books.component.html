@@ -4,12 +4,12 @@
     <div *ngFor="let book of books" class="col s3 card-book">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{book.name}}</mat-card-title>
+          <mat-card-title>{{book.book.name}}</mat-card-title>
         </mat-card-header>
         <img mat-card-image src="https://images-na.ssl-images-amazon.com/images/I/5122jZUCZcL._SR600,315_SCLZZZZZZZ_.jpg" alt="twd">
         <mat-card-actions class="btn_position">
-          <button mat-raised-button (click)="openBottomSheet(book)" class="btn1">Visualizar</button>
-          <button mat-fab color="primary" (click)="onClickFavorite(book)">
+          <button mat-raised-button (click)="openBottomSheet(book.book)" class="btn1">Visualizar</button>
+          <button mat-fab color="primary" (click)="onClickFavorite(book.book)">
             <mat-icon>star</mat-icon>
           </button>
         </mat-card-actions>
