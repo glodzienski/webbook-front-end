@@ -22,4 +22,8 @@ export class BookService {
 
       return this.httpHelper.$_post(this.apiEndpoint + "/favorite", payload);
     }
+
+    public getFavorites(): any {
+      return this.httpHelper.$_get<Book[]>(this.apiEndpoint + "/favorite");
+    }
 }
