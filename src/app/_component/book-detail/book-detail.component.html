@@ -5,5 +5,5 @@
   <p><span>Autores: </span>{{data.author.name}}</p>
   <p><span>Editora: </span>{{data.publisher.name}}</p>
   <p><span>Ano: </span>{{data.publisher.foundationDate}}</p>
-  <a routerLink="/readingbook" routerLinkActive="active" class="btn btn1">ler</a>
+  <a (click)="openBook()" routerLinkActive="active" class="btn btn1">ler</a>
 </div>
