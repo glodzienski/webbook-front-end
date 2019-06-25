@@ -18,6 +18,8 @@ import {AddressRegisterModalComponent} from './_component/address-register-modal
 import {AddressSettingsComponent} from './_component/address-settings/address-settings.component';
 import {SubscriptionComponent} from './page/subscription/subscription.component';
 import {SubscriptionRegisterModalComponent} from './_component/subscription-register-modal/subscription-register-modal.component';
+import {ReadingbookComponent} from './page/readingbook/readingbook.component';
+
 
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -53,12 +55,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-<<<<<<< HEAD
-import {ErrorInterceptor} from '@/_helper/error.interceptor';
-import { ReadingbookComponent } from './page/readingbook/readingbook.component';
-=======
 import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
->>>>>>> b7dc5003edb0fd0195ce16681e317ea7a59ae2e0
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -68,9 +65,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-<<<<<<< HEAD
-        ReadingbookComponent
-=======
         SettingsComponent,
         UserFormComponent,
         LoadingComponent,
@@ -79,12 +73,12 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         BookDetailComponent,
         SubscriptionComponent,
         SubscriptionRegisterModalComponent,
+        ReadingbookComponent
     ],
     entryComponents: [
         AddressRegisterModalComponent,
         BookDetailComponent,
         SubscriptionRegisterModalComponent
->>>>>>> b7dc5003edb0fd0195ce16681e317ea7a59ae2e0
     ],
     imports: [
         BrowserModule,

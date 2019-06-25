@@ -9,12 +9,8 @@ import {Router} from '@angular/router';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.less']
 })
-<<<<<<< HEAD
 
-export class AppComponent implements OnDestroy, OnInit {
-=======
 export class AppComponent implements OnDestroy {
->>>>>>> b7dc5003edb0fd0195ce16681e317ea7a59ae2e0
     mobileQuery: MediaQueryList;
     isLogged: boolean;
     private isLoggedObservable: Observable<boolean>;
