@@ -29,9 +29,9 @@ export class SubscriptionRegisterModalComponent implements OnInit {
 
     ngOnInit() {
         this.listAddresses();
+
         this.planService.get()
             .then(plans => (this.plans = plans));
-        this.addresses = [];
 
         this.subscriptionForm = this.formBuilder.group({
             plan: ['', Validators.required],
@@ -73,6 +73,7 @@ export class SubscriptionRegisterModalComponent implements OnInit {
     }
 
     private listAddresses(): void {
+        this.addresses = [];
         this.addressService.get()
             .then(addresses => (this.addresses = addresses))
             .catch(error => this.alertHelper.error(error));

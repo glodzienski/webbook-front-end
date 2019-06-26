@@ -1,9 +1,18 @@
-<div class="fake-modal">
-  <img width="100%" height="auto" src="https://images-na.ssl-images-amazon.com/images/I/5122jZUCZcL._SR600,315_SCLZZZZZZZ_.jpg" alt="Photo of a Shiba Inu">
-  <h4>{{data.name}}</h4>
-  <p><span>Gêneros: </span>{{data.name}}</p>
-  <p><span>Autores: </span>{{data.author.name}}</p>
-  <p><span>Editora: </span>{{data.publisher.name}}</p>
-  <p><span>Ano: </span>{{data.publisher.foundationDate}}</p>
-  <a (click)="openBook()" routerLinkActive="active" class="btn btn1">ler</a>
+<div class="row fake-modal">
+    <div class="col s5 mt-5 center-align">
+        <img src="https://dummyimage.com/400x600/1f1c1f/ffffff&text=Obra">
+    </div>
+    <div class="col s7">
+        <h4>{{data.name}}</h4>
+        <p><span>Categoria: </span>{{data.bookCategory.name}}</p>
+        <p><span>Autor: </span>{{data.author.name}}</p>
+        <p><span>Editora: </span>{{data.publisher.name}}</p>
+        <p><span>Ano de lançamento: </span>{{data.bookInfo.releaseDate}}</p>
+        <p><span>Sinopse: </span>{{data.bookInfo.synopsis}}</p>
+        <button mat-raised-button
+                color="primary"
+                (click)="openBook()">
+            Ler obra
+        </button>
+    </div>
 </div>
