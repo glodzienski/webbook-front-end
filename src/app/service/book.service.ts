@@ -23,6 +23,10 @@ export class BookService {
         return this.httpHelper.$_post(`${this.apiEndpoint}/favorite`, payload);
     }
 
+    public desfavorite(bookFavorite: BookFavorite): any {
+        return this.httpHelper.$_delete(`${this.apiEndpoint}/favorite/${bookFavorite.code}`);
+    }
+
     public getFavorites(): any {
         return this.httpHelper.$_get<Book[]>(`${this.apiEndpoint}/favorite`);
     }
