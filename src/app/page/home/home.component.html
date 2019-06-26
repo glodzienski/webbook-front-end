@@ -1,14 +1,5 @@
 <div class="container-fluid mt-15">
     <div class="row">
-        <div *ngFor="let book of books" class="col s3 mt-15">
-            <mat-card (click)="openBottomSheet(book)" class="cursor pointer">
-                <mat-card-title>
-                    {{book.name}}
-                    <mat-icon (click)="onClickFavorite(book)">star_border</mat-icon>
-                </mat-card-title>
-                <img mat-card-image
-                     src="https://dummyimage.com/500x400/1f1c1f/ffffff&text=...">
-            </mat-card>
-        </div>
+        <app-book-case></app-book-case>
     </div>
 </div>

@@ -57,6 +57,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptorHelper} from '@/_helper/error.interceptor.helper';
+import { BookCaseComponent } from './_component/book-case/book-case.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -75,7 +76,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
         SubscriptionComponent,
         SubscriptionRegisterModalComponent,
         MyFavoriteBooksComponent,
-        ReadingbookComponent
+        ReadingbookComponent,
+        BookCaseComponent
     ],
     entryComponents: [
         AddressRegisterModalComponent,

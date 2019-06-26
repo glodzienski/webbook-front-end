@@ -1,33 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {BookDetailComponent} from '@/_component/book-detail/book-detail.component';
-import {MatBottomSheet} from '@angular/material/bottom-sheet';
-import {BookService} from '@/service';
-import {Book} from '@/model';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.less']
 })
-export class HomeComponent implements OnInit {
-    public books: Book[];
+export class HomeComponent {
+    constructor() {
 
-    constructor(private bottomSheet: MatBottomSheet, private bookService: BookService) {
-
-    }
-
-    ngOnInit() {
-        this.bookService.get()
-            .then(books => (this.books = books));
-    }
-
-    openBottomSheet(book: Book): void {
-        this.bottomSheet.open(BookDetailComponent, {
-            data: book
-        });
-    }
-
-    onClickFavorite(book: Book): void {
-      this.bookService.favorite(book);
     }
 }
