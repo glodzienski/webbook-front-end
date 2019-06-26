@@ -38,10 +38,6 @@ export class BookCaseComponent implements OnInit {
         });
     }
 
-    public onClickFavorite(book: Book): void {
-        this.bookService.favorite(book);
-    }
-
     public doesHaveBooks(): boolean {
         return !!this.books && this.books.length > 0;
     }

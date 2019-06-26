@@ -16,11 +16,11 @@ export class BookService {
         return this.httpHelper.$_get<Book[]>(this.apiEndpoint);
     }
 
-    public favorite(book: Book): void {
+    public favorite(book: Book): any {
         const payload = new BookFavorite();
         payload.book = book;
 
-        this.httpHelper.$_post(`${this.apiEndpoint}/favorite`, payload);
+        return this.httpHelper.$_post(`${this.apiEndpoint}/favorite`, payload);
     }
 
     public getFavorites(): any {

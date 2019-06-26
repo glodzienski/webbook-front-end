@@ -9,10 +9,18 @@
         <p><span>Editora: </span>{{data.publisher.name}}</p>
         <p><span>Ano de lançamento: </span>{{data.bookInfo.releaseDate}}</p>
         <p><span>Sinopse: </span>{{data.bookInfo.synopsis}}</p>
-        <button mat-raised-button
-                color="primary"
-                (click)="openBook()">
-            Ler obra
-        </button>
+        <p>
+            <button mat-raised-button
+                    color="primary"
+                    (click)="openBook()">
+                Ler obra
+            </button>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <button mat-mini-fab
+                    (click)="onClickFavorite(data)"
+                    class="yellow darken-3">
+                <mat-icon>{{getFavoriteIcon(data.bookFavorite)}}</mat-icon>
+            </button>
+        </p>
     </div>
 </div>

@@ -1,8 +1,9 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {Router} from '@angular/router';
 import {MAT_BOTTOM_SHEET_DATA} from '@angular/material';
-import {Book} from '@/model';
+import {Book, BookFavorite} from '@/model';
+import {BookService} from '@/service';
 
 
 @Component({
@@ -13,7 +14,8 @@ import {Book} from '@/model';
 export class BookDetailComponent {
     constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: Book,
                 private bottomSheetRef: MatBottomSheetRef,
-                private router: Router) {
+                private router: Router,
+                private bookService: BookService) {
     }
 
     public openBook(event: MouseEvent): void {
@@ -22,5 +24,16 @@ export class BookDetailComponent {
             .subscribe(_ => (this.router.navigate(['/readingbook'])));
         this.bottomSheetRef.dismiss();
         event.preventDefault();
+    }
+
+    public onClickFavorite(book: Book): void {
+        this.bookService.favorite(book)
+            .then(bookFavorite => (this.data.bookFavorite = bookFavorite));
+    }
+
+    public getFavoriteIcon(bookFavorite: BookFavorite): string {
+        return bookFavorite
+            ? 'star'
+            : 'star_border';
     }
 }
