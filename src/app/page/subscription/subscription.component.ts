@@ -37,7 +37,6 @@ export class SubscriptionComponent implements OnInit {
     }
 
     public onClickCancelSubscription(): void {
-        debugger;
         this.subscriptionService.cancel(this.subscription[0])
             .then(_ => (this.getSubscriptions()))
             .catch(error => this.alertHelper.error(error));

@@ -15,7 +15,7 @@ export class AddressSettingsComponent implements OnInit {
     public addressesTableDisplayedColumns: string[];
     public isRequesting: boolean;
 
-    constructor(public modal: MatDialog,
+    constructor(private modal: MatDialog,
                 private addressService: AddressService,
                 private alertHelper: AlertHelper) {
     }

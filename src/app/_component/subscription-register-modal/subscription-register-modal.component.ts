@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MatDialogRef} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {AddressService} from '@/service';
 import {AlertHelper} from '@/_helper';
 import {Address, Plan, Subscription} from '@/model';
 import {PlanService} from '@/service/plan.service';
 import {SubscriptionService} from '@/service/subscription.service';
+import {AddressRegisterModalComponent} from '@/_component/address-register-modal/address-register-modal.component';
 
 @Component({
     selector: 'app-subscription-register-modal',
@@ -22,14 +23,15 @@ export class SubscriptionRegisterModalComponent implements OnInit {
                 private planService: PlanService,
                 private addressService: AddressService,
                 private subscriptionService: SubscriptionService,
+                private addressModal: MatDialog,
                 private alertHelper: AlertHelper) {
     }
 
     ngOnInit() {
+        this.listAddresses();
         this.planService.get()
             .then(plans => (this.plans = plans));
-        this.addressService.get()
-            .then(addresses => (this.addresses = addresses));
+        this.addresses = [];
 
         this.subscriptionForm = this.formBuilder.group({
             plan: ['', Validators.required],
@@ -38,7 +40,6 @@ export class SubscriptionRegisterModalComponent implements OnInit {
     }
 
     public onClickRegisterSubscription(): void {
-        debugger;
         if (this.subscriptionForm.invalid) {
             this.alertHelper.warn('Faltaram algumas informações, que tal checar o formulário?');
             return;
@@ -53,6 +54,27 @@ export class SubscriptionRegisterModalComponent implements OnInit {
                 this.alertHelper.success('Plano assinado com sucesso!');
                 this.dialogRef.close();
             })
+            .catch(error => this.alertHelper.error(error));
+    }
+
+    public doesNotHaveAdreesses(): boolean {
+        const doesHaveAddresses = !!this.addresses && this.addresses.length > 0;
+
+        return !doesHaveAddresses;
+    }
+
+    public onClickAddAddress(): void {
+        this.addressModal
+            .open(AddressRegisterModalComponent, {
+                width: '80%'
+            })
+            .afterClosed()
+            .subscribe(_ => this.listAddresses());
+    }
+
+    private listAddresses(): void {
+        this.addressService.get()
+            .then(addresses => (this.addresses = addresses))
             .catch(error => this.alertHelper.error(error));
     }
 }
