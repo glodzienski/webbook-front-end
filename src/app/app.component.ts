@@ -15,12 +15,6 @@ export class AppComponent implements OnDestroy {
     isLogged: boolean;
     private isLoggedObservable: Observable<boolean>;
 
-    menuItems = [
-        'Obras',
-        'Favoritos',
-        'Assinatura'
-    ];
-
     constructor(changeDetectorRef: ChangeDetectorRef,
                 media: MediaMatcher,
                 private authService: AuthService,

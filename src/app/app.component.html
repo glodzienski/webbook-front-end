@@ -23,7 +23,8 @@
         <mat-sidenav #snav mode="over"
                      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
             <mat-nav-list>
-                <a mat-list-item routerLink="." *ngFor="let menuItem of menuItems">{{menuItem}}</a>
+                <a mat-list-item routerLink="/my-favorite-books">Obras favoritas</a>
+                <a mat-list-item routerLink="/subscription">Assinatura</a>
             </mat-nav-list>
         </mat-sidenav>
 
