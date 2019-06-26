@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {AddressService} from '@/service';
+import {AddressService, PlanService, SubscriptionService} from '@/service';
 import {AlertHelper} from '@/_helper';
 import {Address, Plan, Subscription} from '@/model';
-import {PlanService} from '@/service/plan.service';
-import {SubscriptionService} from '@/service/subscription.service';
 import {AddressRegisterModalComponent} from '@/_component/address-register-modal/address-register-modal.component';
 
 @Component({

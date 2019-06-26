@@ -11,7 +11,7 @@
                 </mat-card-actions>
             </mat-card>
         </div>
-        <div class="col s6 offset-s3 mt-50 center-align" *ngIf="!hasSubscription()">
+        <div class="col s6 offset-s3 mt-50 center-align" *ngIf="subscription && !hasSubscription()">
             <h3>Você não possui plano contratado!</h3>
             <button mat-raised-button color="primary" (click)="onClickRegisterSubscription()">Contratar plano</button>
         </div>

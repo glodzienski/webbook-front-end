@@ -18,12 +18,11 @@ export class BookDetailComponent {
                 private bookService: BookService) {
     }
 
-    public openBook(event: MouseEvent): void {
+    public openBook(): void {
         this.bottomSheetRef
             .afterDismissed()
             .subscribe(_ => (this.router.navigate(['/readingbook'])));
         this.bottomSheetRef.dismiss();
-        event.preventDefault();
     }
 
     public onClickFavorite(book: Book): void {

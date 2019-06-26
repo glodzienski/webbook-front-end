@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SubscriptionService} from '@/service/subscription.service';
+import {SubscriptionService} from '@/service';
 import {Subscription} from '@/model';
 import {MatDialog} from '@angular/material';
 import {SubscriptionRegisterModalComponent} from '@/_component/subscription-register-modal/subscription-register-modal.component';
@@ -33,7 +33,7 @@ export class SubscriptionComponent implements OnInit {
                 width: '30%'
             })
             .afterClosed()
-            .subscribe(_ => (this.getSubscriptions()));
+            .subscribe(_ => this.getSubscriptions());
     }
 
     public onClickCancelSubscription(): void {

@@ -11,8 +11,8 @@ import {AlertHelper} from '@/_helper';
     styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    returnUrl: string;
+    public loginForm: FormGroup;
+    private returnUrl: string;
 
     constructor(private authService: AuthService,
                 private alertHelper: AlertHelper,
