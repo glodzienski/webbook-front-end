@@ -1,5 +1,5 @@
 <div *ngIf="!favorites && doesHaveBooks()">
-    <div *ngFor="let book of books" class="col s3 mt-15">
+    <div *ngFor="let book of books" class="col l3 s12 mt-15">
         <mat-card (click)="openBottomSheet(book)" class="cursor pointer">
             <mat-card-title>{{book.name}}</mat-card-title>
             <img mat-card-image
@@ -9,11 +9,11 @@
 </div>
 <div *ngIf="favorites">
     <div *ngIf="favorites && !doesHaveFavoritesBooks()"
-         class="col s6 offset-s3 mt-50 grey darken-4 p-20 white-text center-align">
+         class="col l6 offset-l3 s12 mt-50 grey darken-4 p-20 white-text center-align">
         <h4>Você não possui obras favoritadas! :D</h4>
     </div>
     <div *ngIf="doesHaveFavoritesBooks()">
-        <div *ngFor="let bookFavorite of booksFavorites" class="col s3 mt-15">
+        <div *ngFor="let bookFavorite of booksFavorites" class="col l3 s12 mt-15">
             <mat-card (click)="openBottomSheet(bookFavorite.book)" class="cursor pointer">
                 <mat-card-title>{{bookFavorite.book.name}}</mat-card-title>
                 <img mat-card-image

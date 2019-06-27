@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col s6 offset-s3 mt-50" *ngIf="hasSubscription()">
+        <div class="col s12 l6 offset-l3 mt-50" *ngIf="hasSubscription()">
             <mat-card>
                 <mat-card-header>
                     <mat-card-title>Plano {{subscription[0].plan.name}}</mat-card-title>
@@ -11,7 +11,7 @@
                 </mat-card-actions>
             </mat-card>
         </div>
-        <div class="col s6 offset-s3 mt-50 center-align" *ngIf="subscription && !hasSubscription()">
+        <div class="col s12 l6 offset-l3 mt-50 center-align" *ngIf="subscription && !hasSubscription()">
             <h3>Você não possui plano contratado!</h3>
             <button mat-raised-button color="primary" (click)="onClickRegisterSubscription()">Contratar plano</button>
         </div>

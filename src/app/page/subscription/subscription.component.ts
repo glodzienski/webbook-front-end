@@ -29,9 +29,7 @@ export class SubscriptionComponent implements OnInit {
 
     public onClickRegisterSubscription(): void {
         this.modal
-            .open(SubscriptionRegisterModalComponent, {
-                width: '30%'
-            })
+            .open(SubscriptionRegisterModalComponent)
             .afterClosed()
             .subscribe(_ => this.getSubscriptions());
     }
