@@ -24,7 +24,7 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
-    login(authLoginDTO: AuthLoginDto) {
+    public login(authLoginDTO: AuthLoginDto) {
         return this.httpHelper.$_post<AuthTokenDto>('auth/login', authLoginDTO)
             .then(({token}) => {
                 localStorage.setItem('token', JSON.stringify(token));
@@ -32,12 +32,12 @@ export class AuthService {
             });
     }
 
-    logout() {
+    public logout(): void {
         localStorage.removeItem('token');
         this.currentTokenSubject.next(null);
     }
 
-    validate(token: string) {
+    public validate(token: string): void {
         const authTokenDto = new AuthTokenDto();
         authTokenDto.token = token;
 
@@ -45,5 +45,9 @@ export class AuthService {
             .then((response: AuthInfoDto) => {
                 localStorage.setItem('user', JSON.stringify(response.user));
             });
+    }
+
+    public isLogged(): boolean {
+        return !!this.currentToken;
     }
 }

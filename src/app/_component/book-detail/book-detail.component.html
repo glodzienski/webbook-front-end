@@ -17,6 +17,7 @@
             </button>
             <span>&nbsp;&nbsp;&nbsp;</span>
             <button mat-mini-fab
+                    *ngIf="authService.isLogged()"
                     (click)="onClickFavorite()"
                     class="yellow darken-3">
                 <mat-icon>{{favoriteIcon}}</mat-icon>

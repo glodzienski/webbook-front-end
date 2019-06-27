@@ -16,6 +16,9 @@
                 <button mat-menu-item (click)="onClickLogout()">Sair</button>
             </mat-menu>
         </section>
+        <section *ngIf="!isLogged">
+            <button mat-raised-button routerLink="/login" routerLinkActive="active">Login</button>
+        </section>
     </mat-toolbar>
 
     <mat-sidenav-container class="example-sidenav-container"

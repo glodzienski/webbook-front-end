@@ -3,7 +3,7 @@ import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {Router} from '@angular/router';
 import {MAT_BOTTOM_SHEET_DATA} from '@angular/material';
 import {Book} from '@/model';
-import {BookService} from '@/service';
+import {AuthService, BookService} from '@/service';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class BookDetailComponent {
     constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: Book,
                 private bottomSheetRef: MatBottomSheetRef,
                 private router: Router,
-                private bookService: BookService) {
+                private bookService: BookService,
+                public authService: AuthService) {
         this.decideFavoriteIcon();
     }
 

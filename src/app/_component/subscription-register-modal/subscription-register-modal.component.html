@@ -19,7 +19,7 @@
             </mat-select>
             <mat-error>Por favor, selecione um endereço de cobrança</mat-error>
         </mat-form-field>
-        <div *ngIf="doesNotHaveAdreesses() && addresses.length"
+        <div *ngIf="doesNotHaveAdreesses()"
              class="col s12 mt-5">
             <button mat-raised-button
                     (click)="onClickAddAddress()"

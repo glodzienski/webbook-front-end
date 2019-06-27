@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Book, BookFavorite} from '@/model';
 import {MatBottomSheet} from '@angular/material';
-import {BookService} from '@/service';
+import {AuthService, BookService} from '@/service';
 import {BookDetailComponent} from '@/_component/book-detail/book-detail.component';
 
 @Component({
@@ -16,25 +16,15 @@ export class BookCaseComponent implements OnInit {
 
     @Input() favorites: boolean;
 
-    constructor(private bottomSheet: MatBottomSheet, private bookService: BookService) {
-
+    constructor(private bottomSheet: MatBottomSheet,
+                private bookService: BookService,
+                private authService: AuthService) {
+        this.books = [];
+        this.booksFavorites = [];
     }
 
     public ngOnInit() {
-        if (this.favorites == null) {
-            this.favorites = false;
-
-            this.bookService.get()
-                .then(books => (this.books = books))
-                .then(_ => {
-                    this.bookService.getFavorites()
-                        .then(booksFavorites => (this.booksFavorites = booksFavorites));
-                });
-            return;
-        }
-
-        this.bookService.getFavorites()
-            .then(booksFavorites => (this.booksFavorites = booksFavorites));
+       this.init();
     }
 
     public openBottomSheet(book: Book): void {
@@ -48,7 +38,7 @@ export class BookCaseComponent implements OnInit {
                 data: book
             })
             .afterDismissed()
-            .subscribe(_ => this.ngOnInit());
+            .subscribe(_ => this.init());
     }
 
     public doesHaveBooks(): boolean {
@@ -57,5 +47,24 @@ export class BookCaseComponent implements OnInit {
 
     public doesHaveFavoritesBooks(): boolean {
         return !!this.booksFavorites && this.booksFavorites.length > 0;
+    }
+
+    public init(): void {
+        if (this.favorites) {
+            this.bookService.getFavorites()
+                .then(booksFavorites => (this.booksFavorites = booksFavorites));
+            return;
+        }
+
+        this.favorites = false;
+
+        this.bookService.get()
+            .then(books => (this.books = books))
+            .then(_ => {
+                if (this.authService.isLogged()) {
+                    this.bookService.getFavorites()
+                        .then(booksFavorites => (this.booksFavorites = booksFavorites));
+                }
+            });
     }
 }
